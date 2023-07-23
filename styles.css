@@ -92,7 +92,7 @@ button:hover {
 
 .category-expenses {
   max-height: 300px;
-  min-width: 400px;
+  width: 100%;
   overflow-y: auto;
 }
 
