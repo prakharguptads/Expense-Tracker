@@ -1,0 +1,148 @@
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.container {
+  max-width: 400px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.container h1 {
+  margin-top: 0;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.label {
+  flex: 1;
+  margin-right: 10px;
+}
+
+input,
+select {
+  flex: 2;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.button-group {
+  display: flex;
+  justify-content: center; /* Center the button horizontally */
+  margin-top: 15px;
+}
+
+button {
+  flex: 1;
+  padding: 10px;
+  margin: 0 5px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+#totals {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+#totals p {
+  margin: 5px;
+  padding: 8px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  display: inline-block;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s;
+  text-transform: capitalize;
+}
+
+#totals p:hover {
+  background-color: #e0e0e0;
+}
+
+.category-expenses {
+  max-height: 300px;
+  min-width: 400px;
+  overflow-y: auto;
+}
+
+
+.category-expenses h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  text-transform: capitalize;
+}
+
+.category-expenses-list-item {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  border-bottom: 1px solid #ccc;
+}
+
+.expense-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  padding: 10px;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  flex-wrap: wrap; 
+  margin-bottom: 15px; 
+  padding: 10px;
+}
+
+.expense-item .info {
+  flex: 2;
+}
+
+.expense-item .delete-button {
+  flex: 1;
+  text-align: right;
+}
+
+.expense-item .delete-button button {
+  background-color: #ff5858;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.expense-item .delete-button button:hover {
+  background-color: #f53d3d;
+}
