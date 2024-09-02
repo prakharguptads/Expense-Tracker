@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="styles.css">
   <!-- Add Font Awesome CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-SZn7pc8q5Q+qyLl9F7Ewn5wiBrnaqUdhwZ8aAFgTGWYfYJYIrGC/7X38wv9a0+bfesYS4z5Kek2JL4PSbrQ1g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.1/xlsx.full.min.js"></script>
 </head>
 <body>
   <div class="container">
@@ -22,8 +23,14 @@
         <option value="transportation">Transportation</option>
         <option value="utilities">Utilities</option>
         <option value="entertainment">Entertainment</option>
+        <option value="rent">Rent</option>
+        <option value="lent">Lent</option>
         <option value="other">Other</option>
       </select>
+    </div>
+    <div class="input-group">
+      <label class="label" for="date">Select Date:</label>
+      <input type="date" id="date">
     </div>
     <div class="input-group">
       <label class="label" for="comment">Comment:</label>
@@ -31,6 +38,7 @@
     </div>
     <div class="button-group">
       <button onclick="saveExpense()">Save</button>
+      <button onclick="downloadExpenses()">Download Expenses</button>
     </div>
 
     <h2>Total Expenses by Category</h2>
