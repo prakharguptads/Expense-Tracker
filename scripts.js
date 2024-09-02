@@ -17,7 +17,7 @@ function saveExpense() {
   const expenses = JSON.parse(localStorage.getItem('expenses')) || [];
 
   const expense = {
-    id: Date.now(), // Unique ID
+    id: Date.now(),
     amount: parseFloat(amount),
     category,
     date,
@@ -39,21 +39,20 @@ function saveExpense() {
   showCategoryExpenses(category);
 }
 
-
 function displayTotals() {
   const expenses = JSON.parse(localStorage.getItem('expenses')) || [];
   const categoryTotals = {};
+  let totalExpense = 0;
 
-  // Calculate the totals for each category
-  expenses.forEach((expense) => {
+  expenses.forEach(expense => {
     if (categoryTotals[expense.category]) {
       categoryTotals[expense.category] += expense.amount;
     } else {
       categoryTotals[expense.category] = expense.amount;
     }
+    totalExpense += expense.amount;
   });
 
-  // Display the totals on the page
   const totalsDiv = document.getElementById('totals');
   totalsDiv.innerHTML = '';
 
@@ -65,6 +64,11 @@ function displayTotals() {
     totalElement.onclick = () => showCategoryExpenses(category);
     totalsDiv.appendChild(totalElement);
   }
+
+  const totalExpenseElement = document.createElement('p');
+  totalExpenseElement.textContent = `Total Expense: ₹${totalExpense.toFixed(2)}`;
+  totalExpenseElement.style.fontWeight = 'bold';
+  totalsDiv.appendChild(totalExpenseElement);
 }
 
 function showCategoryExpenses(category) {
@@ -120,7 +124,6 @@ function deleteExpense(id) {
   const selectedCategory = document.getElementById('selectedCategory').textContent;
   showCategoryExpenses(selectedCategory);
 }
-
 
 function editExpense(id) {
   const expenses = JSON.parse(localStorage.getItem('expenses')) || [];
@@ -188,14 +191,11 @@ function downloadExpenses() {
     return;
   }
 
-  // Create a new workbook and add the expenses data
   const wb = XLSX.utils.book_new();
   const ws = XLSX.utils.json_to_sheet(expenses);
   XLSX.utils.book_append_sheet(wb, ws, 'Expenses');
 
-  // Generate a file and trigger a download
   XLSX.writeFile(wb, 'expenses.xlsx');
 }
 
-// Initial display of totals when the page loads
 window.onload = displayTotals;
