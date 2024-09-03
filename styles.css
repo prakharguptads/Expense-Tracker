@@ -4,33 +4,29 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 150vh;
+  min-height: 100vh; /* Adjust height to viewport height */
   margin: 0;
   background-color: #f4f4f9;
 }
 
 /* Container Styling */
 .container {
-  max-width: 500px;
+  max-width: 600px; /* Increased max-width for larger screens */
   width: 100%;
-  padding: 200px;
+  padding: 20px; /* Reduced padding for better spacing */
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch; /* Align items to stretch the container */
 }
 
 /* Title Styling */
 h1 {
-  font-size: 24px;
+  font-size: 28px; /* Increased font size for better visibility */
   color: #333;
-  margin-bottom: 20px;
-}
-
-.container h1 {
-  margin-top: 0;
+  margin: 0 0 20px; /* Adjusted margins */
 }
 
 /* Input Group Styling */
@@ -50,10 +46,11 @@ h1 {
 input,
 select {
   width: 100%;
-  padding: 10px;
+  padding: 12px; /* Increased padding for better touch targets */
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 16px;
+  box-sizing: border-box; /* Ensure padding is included in the width */
   margin-bottom: 10px;
 }
 
@@ -67,7 +64,7 @@ select {
 
 button {
   flex: 1;
-  padding: 10px;
+  padding: 12px; /* Increased padding for better touch targets */
   margin: 0 5px;
   background-color: #4CAF50;
   color: #fff;
@@ -75,11 +72,12 @@ button {
   border-radius: 4px;
   cursor: pointer;
   font-size: 16px;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, transform 0.2s;
 }
 
 button:hover {
   background-color: #45a049;
+  transform: scale(1.02); /* Slight scale effect for better feedback */
 }
 
 /* Totals Section Styling */
@@ -98,26 +96,26 @@ button:hover {
   display: inline-block;
   cursor: pointer;
   font-weight: bold;
-  transition: background-color 0.2s;
+  transition: background-color 0.2s, transform 0.2s;
   text-transform: capitalize;
 }
 
 #totals p:hover {
   background-color: #e0e0e0;
+  transform: scale(1.02); /* Slight scale effect for better feedback */
 }
 
 /* Category Expenses Styling */
 .category-expenses {
-  max-height: 300px;
+  max-height: 400px; /* Increased max-height for better visibility */
   width: 100%;
   overflow-y: auto;
   margin-top: 20px;
 }
 
 .category-expenses h3 {
-  margin-top: 0;
-  margin-bottom: 15px;
-  font-size: 20px;
+  margin: 0 0 15px; /* Adjusted margins */
+  font-size: 22px; /* Increased font size for better visibility */
   color: #333;
 }
 
@@ -132,11 +130,12 @@ button:hover {
   background-color: #fafafa;
   margin-bottom: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, transform 0.2s;
 }
 
 .expense-item:hover {
   background-color: #f1f1f1;
+  transform: scale(1.01); /* Slight scale effect for better feedback */
 }
 
 .expense-item .info {
@@ -155,10 +154,10 @@ button:hover {
   color: #fff;
   border: none;
   border-radius: 4px;
-  padding: 5px 10px;
+  padding: 8px 12px; /* Adjusted padding for better touch targets */
   cursor: pointer;
   font-size: 14px;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, transform 0.2s;
 }
 
 .expense-item .edit-button button {
@@ -168,10 +167,12 @@ button:hover {
 
 .expense-item .delete-button button:hover {
   background-color: #f53d3d;
+  transform: scale(1.02); /* Slight scale effect for better feedback */
 }
 
 .expense-item .edit-button button:hover {
   background-color: #45a049;
+  transform: scale(1.02); /* Slight scale effect for better feedback */
 }
 
 /* Responsive Design */
