@@ -1,83 +1,193 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Expense Tracker</title>
-  <link rel="stylesheet" href="styles.css">
-  <!-- Add Font Awesome CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-SZn7pc8q5Q+qyLl9F7Ewn5wiBrnaqUdhwZ8aAFgTGWYfYJYIrGC/7X38wv9a0+bfesYS4z5Kek2JL4PSbrQ1g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.1/xlsx.full.min.js"></script>
-</head>
-<body>
-  <div class="container">
-    <h1>Expense Tracker</h1>
-    <div class="input-group">
-      <label class="label" for="amount">Enter Amount:</label>
-      <input type="number" id="amount" min="0">
-    </div>
-    <div class="input-group">
-      <label class="label" for="category">Select Category:</label>
-      <select id="category">
-        <option value="food">Food</option>
-        <option value="transportation">Transportation</option>
-        <option value="utilities">Utilities</option>
-        <option value="entertainment">Entertainment</option>
-        <option value="rent">Rent</option>
-        <option value="lent">Lent</option>
-        <option value="other">Other</option>
-      </select>
-    </div>
-    <div class="input-group">
-      <label class="label" for="date">Select Date:</label>
-      <input type="date" id="date">
-    </div>
-    <div class="input-group">
-      <label class="label" for="comment">Comment:</label>
-      <input type="text" id="comment">
-    </div>
-    <div class="button-group">
-      <button onclick="saveExpense()">Save</button>
-      <button onclick="downloadExpenses()">Download All Expenses</button>
-    </div>
-    <br>
-    <div class="input-group">
-      <label class="label" for="year">Select Year:</label>
-      <input type="number" id="year" min="1900" max="2100">
-    </div>
-    <div class="input-group">
-      <label class="label" for="month">Select Month:</label>
-      <select id="month">
-        <option value="">--Select Month--</option>
-        <option value="01">January</option>
-        <option value="02">February</option>
-        <option value="03">March</option>
-        <option value="04">April</option>
-        <option value="05">May</option>
-        <option value="06">June</option>
-        <option value="07">July</option>
-        <option value="08">August</option>
-        <option value="09">September</option>
-        <option value="10">October</option>
-        <option value="11">November</option>
-        <option value="12">December</option>
-      </select>
-    </div>
-    <div class="button-group">
-      <button onclick="filterExpenses()">Filter Expenses</button>
-      <button onclick="downloadMonthExpenses()">Download Monthly Expenses</button>
-      <button onclick="clearFilter()">Clear Filter</button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Money Management</title>
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Add Font Awesome CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      integrity="sha512-SZn7pc8q5Q+qyLl9F7Ewn5wiBrnaqUdhwZ8aAFgTGWYfYJYIrGC/7X38wv9a0+bfesYS4z5Kek2JL4PSbrQ1g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.1/xlsx.full.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Money Management</h1>
+      <div class="tabs">
+        <button class="tab-button" id="expenseTab" onclick="switchTab('expense')">Expenses</button>
+        <button class="tab-button" id="earningTab" onclick="switchTab('earning')">Earnings</button>
+        <button class="tab-button" id="investmentTab" onclick="switchTab('investment')">Investment</button>
+      </div>
+      <div id="expenseTabContent" class="tab-content">
+        <h2>Expense Tracker</h2>
+        <div class="input-group">
+          <label class="label" for="amount">Enter Amount:</label>
+          <input type="number" id="amount" min="0" />
+        </div>
+        <div class="input-group">
+          <label class="label" for="category">Select Category:</label>
+          <select id="category">
+            <option value="fixed">Fixed Expenses</option>
+            <option value="variable">Variable Expenses</option>
+            <option value="discretionary">Discretionary Expenses</option>
+            <option value="healthcare">Healthcare Expenses</option>
+            <option value="education">Education</option>
+            <option value="home_maintenance">Home Maintenance</option>
+            <option value="childcare">Childcare & Family</option>
+            <option value="debt_repayment">Debt Repayments</option>
+            <option value="miscellaneous">Miscellaneous</option>
+          </select>
+        </div>
+        
+        <!-- Sub-Category Select Input -->
+        <div class="input-group">
+          <label class="label" for="sub-category">Select Sub-Category:</label>
+          <select id="sub-category">
+            <!-- Sub-categories will be dynamically updated based on the selected category -->
+          </select>
+        </div>
+        <div class="input-group">
+          <label class="label" for="date">Select Date:</label>
+          <input type="date" id="date" />
+        </div>
+        <div class="input-group">
+          <label class="label" for="comment">Comment:</label>
+          <input type="text" id="comment" />
+        </div>
+        <div class="button-group">
+          <button onclick="saveExpense()">Save</button>
+          <button onclick="downloadExpenses()">Download All Expenses</button>
+        </div>
+        <br />
+        <div class="input-group">
+          <label class="label" for="year">Select Year:</label>
+          <input type="number" id="year" min="1900" max="2100" />
+        </div>
+        <div class="input-group">
+          <label class="label" for="month">Select Month:</label>
+          <select id="month">
+            <option value="">--Select Month--</option>
+            <option value="01">January</option>
+            <option value="02">February</option>
+            <option value="03">March</option>
+            <option value="04">April</option>
+            <option value="05">May</option>
+            <option value="06">June</option>
+            <option value="07">July</option>
+            <option value="08">August</option>
+            <option value="09">September</option>
+            <option value="10">October</option>
+            <option value="11">November</option>
+            <option value="12">December</option>
+          </select>
+        </div>
+        <div class="button-group">
+          <button onclick="filterExpenses()">Filter Expenses</button>
+          <button onclick="downloadMonthExpenses()">
+            Download Monthly Expenses
+          </button>
+          <button onclick="clearFilter()">Clear Filter</button>
+        </div>
+
+        <h2>Total Expenses by Category</h2>
+        <div id="totals"></div>
+
+        <div
+          id="categoryExpenses"
+          class="category-expenses"
+          style="display: none"
+        >
+          <h3>Category: <span id="selectedCategory"></span></h3>
+          <div id="categoryExpensesList"></div>
+        </div>
+      </div>
+
+      <div id="earningTabContent" class="tab-content" style="display: none">
+        <!-- Earning input form and buttons here -->
+        <!-- Earning-related content here -->
+        <h2>Earnings Tracker</h2>
+        <div class="input-group">
+          <label class="label" for="earningAmount">Enter Earning Amount:</label>
+          <input type="number" id="earningAmount" min="0">
+        </div>
+        <div class="input-group">
+          <label class="label" for="earningCategory">Select Earning Category:</label>
+          <select id="earningCategory">
+            <option value="salary">Salary</option>
+            <option value="business">Business Income</option>
+            <option value="investment">Investment Income</option>
+            <option value="freelance">Freelance</option>
+            <option value="gift">Gift</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <label class="label" for="earningDate">Select Date:</label>
+          <input type="date" id="earningDate">
+        </div>
+        <div class="input-group">
+          <label class="label" for="earningComment">Comment:</label>
+          <input type="text" id="earningComment">
+        </div>
+        <div class="button-group">
+          <button onclick="saveEarning()">Save Earning</button>
+        </div>
+  
+        <h3>Earnings Totals</h3>
+        <div id="earningTotals"></div>
+  
+        <div id="earningDetails" class="earning-details" style="display:none;">
+          <h3>Earnings Details</h3>
+          <div id="earningDetailsList"></div>
+        </div>
+      </div>
+      <div id="investmentTabContent" class="tab-content" style="display: none">
+        <!-- Investment input form and buttons here -->
+        <!-- Investment-related content here -->
+        <h2>Investment Tracker</h2>
+        <div class="input-group">
+          <label class="label" for="investmentAmount">Enter Investment Amount:</label>
+          <input type="number" id="investmentAmount" min="0">
+        </div>
+        <div class="input-group">
+          <label class="label" for="investmentType">Select Investment Type:</label>
+          <select id="investmentType">
+            <option value="stocks">Stocks</option>
+            <option value="bonds">Bonds</option>
+            <option value="mutual_fund">Mutual Fund</option>
+            <option value="real_estate">Real Estate</option>
+            <option value="crypto">Cryptocurrency</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <label class="label" for="investmentDate">Select Date:</label>
+          <input type="date" id="investmentDate">
+        </div>
+        <div class="input-group">
+          <label class="label" for="investmentComment">Comment:</label>
+          <input type="text" id="investmentComment">
+        </div>
+        <div class="button-group">
+          <button onclick="saveInvestment()">Save Investment</button>
+        </div>
+  
+        <h3>Investment Totals</h3>
+        <div id="investmentTotals"></div>
+  
+        <div id="investmentDetails" class="investment-details" style="display:none;">
+          <h3>Investment Details</h3>
+          <div id="investmentDetailsList"></div>
+        </div>
+      </div>
     </div>
 
-    <h2>Total Expenses by Category</h2>
-    <div id="totals"></div>
+    <script src="scripts.js"></script>
 
-    <div id="categoryExpenses" class="category-expenses" style="display:none;">
-      <h3>Category: <span id="selectedCategory"></span></h3>
-      <div id="categoryExpensesList"></div>
-    </div>
-  </div>
-
-  <script src="scripts.js"></script>
-</body>
+  </body>
 </html>

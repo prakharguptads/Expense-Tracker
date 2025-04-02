@@ -189,3 +189,153 @@ button:hover {
     margin-bottom: 10px;
   }
 }
+/* Tab Navigation Styling */
+.tab-nav {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.tab-btn.active {
+  background-color: #45a049;
+}
+
+.tab-btn:hover {
+  background-color: #45a049;
+}
+
+/* Tab Content Styling */
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+/* Tab Button Styling */
+.tabs {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.tab-button {
+  flex: 1;
+  padding: 15px;
+  background-color: #f1f1f1;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  text-align: center;
+}
+
+.tab-button.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.tab-content {
+  display: none;
+}
+
+/* Investment Section Styling */
+.investment-details {
+  max-height: 400px;
+  width: 100%;
+  overflow-y: auto;
+  margin-top: 20px;
+}
+
+.investment-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  background-color: #fafafa;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.investment-item:hover {
+  background-color: #f1f1f1;
+  transform: scale(1.01); /* Slight scale effect for better feedback */
+}
+
+/* Tab Button Styling */
+.tabs {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.tab-button {
+  flex: 1;
+  padding: 15px;
+  background-color: #f1f1f1;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  text-align: center;
+}
+
+.tab-button.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.tab-content {
+  display: none;
+}
+
+/* Earning Section Styling */
+.earning-details {
+  max-height: 400px;
+  width: 100%;
+  overflow-y: auto;
+  margin-top: 20px;
+}
+
+.earning-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  background-color: #fafafa;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.earning-item:hover {
+  background-color: #f1f1f1;
+  transform: scale(1.01); /* Slight scale effect for better feedback */
+}
+
+/* Ensure input fields, including the sub-category select, match overall form styling */
+input, select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
