@@ -93,16 +93,25 @@
           </button>
           <button onclick="clearFilter()">Clear Filter</button>
         </div>
+        
+      <div class="input-group">
+        </div>
+        <div id="subcategoryFilterContainer" class="input-group">
+          <!-- <label for="subcategoryFilter">Filter by Subcategory: </label> -->
+          <select id="subcategoryFilter">
+            <option value="">Select Subcategory</option>
+            <!-- Subcategories will be dynamically populated here -->
+          </select>
+          <button id="filterSubcategoryButton">Filter</button>
+        </div>
+        <!-- </div> -->
+
 
         <h2>Total Expenses by Category</h2>
         <div id="totals"></div>
 
-        <div
-          id="categoryExpenses"
-          class="category-expenses"
-          style="display: none"
-        >
-          <h3>Category: <span id="selectedCategory"></span></h3>
+        <div id="categoryExpenses" style="display:none;">
+          <h3 id="selectedCategory"></h3>
           <div id="categoryExpensesList"></div>
         </div>
       </div>
